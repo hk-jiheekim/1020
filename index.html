@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<idoctype html>
+		<title>죽는다 죽어</title>
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+		<style type="text/css">
+
+
+			body{background:black;}
+			h1{position: absolute; color: red; font-size: 75px;
+				font-family: 'Permanent Marker', cursive; left: -120px; width: 400px;}
+			.ai{position: absolute; top: 100px; left:calc(50% - 300px);}
+			.ii{width: 600px;}
+			.pp{position: absolute; font-family: 'Permanent Marker', cursive; font-size: 25px; color: red; top: 350px; left: 400px;}
+			.balloon{width: 300px; height: 500px;  background-repeat: no-repeat; animation: bMove 8s linear;}
+			
+			@keyframes bMove{
+				0%{ background-position: 0 300px; opacity: 0;}
+				20%{opacity: 1;}
+				80%{opacity: 1;}
+				100%{background-position: 0 0; opacity: 0;}
+			}
+
+			.rain{width: 3px; height: 50px; position: absolute; background: white;
+			animation: rr 1s infinite ease-in;}
+		.rain:hover{height: 400px;}
+		
+		@keyframes rr{from{bottom: 800px;} to{bottom: 0px;}}
+		
+		</style>
+		
+		<div class="ai"> 
+			<h1>DON'T KILL ME</h1>
+			<div class="rain" id="tt"></div>
+			<img src="./aa.png" class="ii"></div>
+			<audio id="mysound"> <source src="gun.mp3" type="audio/mp3"></audio>
+			<p class="pp">click → die</p>
+		
+		<script type="text/javascript">
+
+			setInterval(attachBalloon,1000);
+			
+			function attachBalloon(){
+				var t = document.createElement("div");
+				t.setAttribute("class","balloon");
+				t.style.position ="absolute";
+
+
+
+				t.style.background = "url('a.gif') no-repeat";
+				t.style.backgroundSize = "100% auto";
+
+				t.style.top = randomBH(0,window.innerHeight) + "px";
+				t.style.left = randomBH(0,window.innerWidth) + "px";
+				t.addEventListener("animationend",remove);
+				
+				t.onclick = function(){
+					t.style.background ="url(b.png)";
+					mysound.play(); 
+
+				}
+				document.body.appendChild(t);
+
+			}
+
+			function remove(){
+				var t = event.target;
+				t.parentNode.removeChild(t);
+			}
+			
+
+			
+
+			function randomBH(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random()*(max-min+1))+min;
+			}
+			
+			
+			for(var i=0; i<50; i++){
+
+			var b =tt.cloneNode(true);
+			b.id = i;
+			b.clssName = "rain";
+			b.style.left = Math.random()*window.innerWidth + "px";
+			b.style.height = Math.random()*50 +"px";
+			b.style.animationDuration = Math.random()*2 + "s";
+			b.style.background = "white";
+			
+			document.body.appendChild(b);
+			}
+		
+		</script>
+		
+	</idoctype>
+</body>
+</html>
